@@ -7,11 +7,14 @@
     "@types/bun": "latest",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.10.1",
-    "@types/swagger-ui-dist": "^3.30.6"
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-dist": "^3.30.6",
+    "swagger-ui-dist": "^5.30.2"
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "prod": "bun run src/index.ts"
+    "prod": "bun run src/index.ts",
+    "build": "bun run build.ts"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -20,7 +23,7 @@
     "@paralleldrive/cuid2": "^3.0.4",
     "h3": "^2.0.1-rc.5",
     "jsonwebtoken": "^9.0.2",
-    "swagger-ui-dist": "^5.30.2",
+    "swagger-jsdoc": "^6.2.8",
     "zod": "^4.1.13"
   }
 }

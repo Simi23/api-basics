@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Interface státusz API",
+    "version": "1.0.0",
+    "description": "API dokumentáció hálózati eszközök interfészeinek állapotáról"
+  },
+  "paths": {},
+  "components": {},
+  "tags": []
+}

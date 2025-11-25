@@ -1,7 +1,7 @@
 import { H3, serve } from "h3";
 import { readJson, type Inventory } from "./data";
 import { installRoutes } from "./routes";
-import { installUi } from "./ui";
+import { installStatic } from "./static";
 
 export const appData: {
   jwtSecret: string;
@@ -14,12 +14,12 @@ export const appData: {
 };
 
 async function main() {
-  appData.db = await readJson("src/switch_inventory.json");
+  appData.db = await readJson("public/switch_inventory.json");
 
   const app = new H3();
 
   installRoutes(app);
-  installUi(app);
+  installStatic(app);
 
   serve(app, { port: 3000 });
 }

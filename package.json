@@ -13,7 +13,7 @@
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "prod": "bun run src/index.ts",
+    "prod": "bun build/index.js",
     "build": "bun run build.ts"
   },
   "peerDependencies": {

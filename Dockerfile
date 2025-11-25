@@ -1,15 +1,16 @@
 FROM oven/bun:1 AS base
 WORKDIR /usr/src/app
 
-FROM base AS install
-RUN mkdir -p /temp/prod
-COPY package.json bun.lock /temp/prod/
-RUN cd /temp/prod && bun install --frozen-lockfile --production
+FROM base AS build
+COPY . .
+RUN bun install --frozen-lockfile
+RUN bun run build
 
 FROM base AS release
 ENV NODE_ENV=production
-COPY --from=install /temp/prod/node_modules node_modules
-COPY . .
+COPY --from=build /usr/src/app/build build
+COPY public public
+COPY ./package.json ./package.json
 
 USER bun
 EXPOSE 3000

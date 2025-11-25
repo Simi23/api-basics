@@ -2,19 +2,18 @@ import z from "zod";
 
 /**
  * @openapi
- * components:
- *   tags:
- *     - name: Unauthenticated endpoints
- *       description: All endpoints with no authentication needed
+ * tags:
+ *   - name: Unauthenticated endpoints
+ *     description: All endpoints with no authentication needed
  *
- *     - name: Endpoints with basic authentication
- *       description: "Endpoints authenticated with the `Authorization: Basic ...` header scheme"
+ *   - name: Endpoints with basic authentication
+ *     description: "Endpoints authenticated with the `Authorization: Basic ...` header scheme"
  *
- *     - name: Endpoints with bearer authentication
- *       description: "Endpoints authenticated with the `Authorization: Bearer ...` header scheme"
+ *   - name: Endpoints with bearer authentication
+ *     description: "Endpoints authenticated with the `Authorization: Bearer ...` header scheme"
  *
- *     - name: Session-authenticated endpoints
- *       description: Endpoints authenticated via session cookies
+ *   - name: Session-authenticated endpoints
+ *     description: Endpoints authenticated via session cookies
  */
 
 /**
@@ -156,6 +155,7 @@ export const interfaceSchema = z.object({
  * components:
  *   responses:
  *     QueryResponse:
+ *       description: The response contains query information along with the data itself.
  *       content:
  *         application/json:
  *           schema:

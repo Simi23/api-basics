@@ -139,6 +139,7 @@ const readAllHandler = defineEventHandler(async (event) => {
  *           format: cuid2
  *     responses:
  *       '200':
+ *         description: The selected interface
  *         content:
  *           application/json:
  *             schema:
@@ -220,6 +221,7 @@ const deleteHandler = defineEventHandler((event) => {
  *             $ref: '#/components/schemas/Interface'
  *     responses:
  *       '201':
+ *         description: The record was created
  *         content:
  *           application/json:
  *             schema:
@@ -276,6 +278,7 @@ const createHandler = defineEventHandler(async (event) => {
  *             $ref: '#/components/schemas/Interface'
  *     responses:
  *       '200':
+ *         description: The newly updated interface
  *         content:
  *           application/json:
  *             schema:
@@ -332,6 +335,7 @@ const updateHandler = defineEventHandler(async (event) => {
  *             $ref: '#/components/schemas/Credential'
  *     responses:
  *       '200':
+ *         description: Authentication successful. The token is returned in the body, as a JWT.
  *         content:
  *           application/json:
  *             schema:

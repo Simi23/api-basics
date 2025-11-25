@@ -18,8 +18,8 @@ async function main() {
 
   const app = new H3();
 
-  installRoutes(app);
   installStatic(app);
+  installRoutes(app);
 
   serve(app, { port: 3000 });
 }

@@ -3,17 +3,17 @@ import { readFile, stat } from "node:fs/promises";
 import { join } from "node:path";
 
 export function installStatic(app: H3) {
-  const uiPath = join("build", "docs");
   const staticPath = "public";
+  const uiPath = join("build", "docs");
 
-  app.use("/docs/**", async (event) => {
+  app.use("/public/**", async (event) => {
     return serveStatic(event, {
       indexNames: ["/index.html"],
       getContents: (id) => {
-        return readFile(join(uiPath, id.slice(5)));
+        return readFile(join(staticPath, id.slice(7)));
       },
       getMeta: async (id) => {
-        const stats = await stat(join(uiPath, id.slice(5))).catch(() => {});
+        const stats = await stat(join(staticPath, id.slice(7))).catch(() => {});
         if (stats?.isFile()) {
           return {
             size: stats.size,
@@ -24,14 +24,14 @@ export function installStatic(app: H3) {
     });
   });
 
-  app.use("/**", async (event) => {
+  app.use("/docs/**", async (event) => {
     return serveStatic(event, {
       indexNames: ["/index.html"],
       getContents: (id) => {
-        return readFile(join(staticPath, id));
+        return readFile(join(uiPath, id.slice(5)));
       },
       getMeta: async (id) => {
-        const stats = await stat(join(staticPath, id)).catch(() => {});
+        const stats = await stat(join(uiPath, id.slice(5))).catch(() => {});
         if (stats?.isFile()) {
           return {
             size: stats.size,

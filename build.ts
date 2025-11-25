@@ -25,14 +25,14 @@ await Promise.all(
 const initializer = path.join("build", "docs", "swagger-initializer.js");
 let configContent = (await readFile(initializer, "utf8")).replace(
   "https://petstore.swagger.io/v2/swagger.json",
-  "/swagger.json"
+  "/docs/swagger.json"
 );
 await writeFile(initializer, configContent);
 
 // Create swagger doc
 const options: swaggerJsdoc.Options = {
   definition: {
-    openapi: "3.0.0",
+    openapi: "3.1.0",
     info: {
       title: "Interface státusz API",
       version: "1.0.0",
@@ -45,7 +45,7 @@ const options: swaggerJsdoc.Options = {
 
 const spec = swaggerJsdoc(options);
 
-await writeFile("./public/swagger.json", JSON.stringify(spec, null, 2));
+await writeFile("./build/docs/swagger.json", JSON.stringify(spec, null, 2));
 
 // Create server bundle
 await Bun.build({
